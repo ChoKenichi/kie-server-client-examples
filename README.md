@@ -20,6 +20,6 @@ All the demos that these examples use can be found on the [JBoss Demo Central](h
 
 
 How to exec 
-  mvn compile exec:java -Dexec.mainClass=KieServerTest
-  mvn compile exec:java -Dexec.mainClass=LocalClient
-  mvn compile exec:java -Dexec.mainClass=LocalClient2
+- mvn compile exec:java -Dexec.mainClass=KieServerTest
+- mvn compile exec:java -Dexec.mainClass=LocalClient
+- mvn compile exec:java -Dexec.mainClass=LocalClient2
