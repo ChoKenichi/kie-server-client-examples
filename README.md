@@ -17,3 +17,9 @@ All the demos that these examples use can be found on the [JBoss Demo Central](h
 - [Red Hat Process Automation Manager 7 Mortgage Demo](https://github.com/jbossdemocentral/rhpam7-mortgage-demo)
 - [Red Hat Decision Manager 7 Quick Loan Bank Demo](https://github.com/jbossdemocentral/rhdm7-qlb-loan-demo)
 - [Red Hat Decision Manager 7 Insurance Pricing DMN Demo](https://github.com/jbossdemocentral/rhdm7-insurance-pricing-dmn-demo)
+
+
+How to exec 
+  mvn compile exec:java -Dexec.mainClass=KieServerTest
+  mvn compile exec:java -Dexec.mainClass=LocalClient
+  mvn compile exec:java -Dexec.mainClass=LocalClient2

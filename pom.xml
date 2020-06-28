@@ -1,24 +1,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--
+     https://access.redhat.com/documentation/ja-jp/red_hat_decision_manager/7.7/html/designing_a_decision_service_using_drl_rules/assets-executing-proc_drl-rules
+-->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kie.demo</groupId>
 	<artifactId>kie-server-client-examples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<!-- Properties required by vertx-maven-plugin -->
-		<version.org.kie>7.12.0.Final</version.org.kie>
+		<rhdm.version>7.33.0.Final-redhat-00003</rhdm.version>
 		<version.ch.qos.logback>1.2.3</version.ch.qos.logback>
 	</properties>
 	<dependencies>
 	
 		<!--  KIE Server Client -->
+<!--
 		<dependency>
 			<groupId>org.kie.server</groupId>
 			<artifactId>kie-server-client</artifactId>
 			<version>${version.org.kie}</version>
 			<scope>compile</scope>
 		</dependency>
+-->
+		<dependency>
+			<groupId>com.myspace</groupId>
+			<artifactId>loan-demo</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	
+<!-- For local execution -->
+<dependency>
+  <groupId>org.kie</groupId>
+  <artifactId>kie-ci</artifactId>
+  <version>${rhdm.version}</version>
+</dependency>
+
+<!-- For remote execution on KIE Server -->
+<dependency>
+  <groupId>org.kie.server</groupId>
+  <artifactId>kie-server-client</artifactId>
+  <version>${rhdm.version}</version>
+</dependency>
+
+<!-- For debug logging (optional) -->
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-simple</artifactId>
+  <version>1.7.25</version>
+</dependency>
+<dependency>
+  <groupId>org.drools</groupId>
+  <artifactId>drools-workbench-models-guided-dtable</artifactId>
+  <version>${rhdm.version}</version>
+</dependency>
+<!--
+<dependency>
+  <groupId>org.drools</groupId>
+  <artifactId>drools-compiler</artifactId>
+  <version>${rhdm.version}</version>
+</dependency>
+<dependency>
+  <groupId>org.drools</groupId>
+  <artifactId>drools-core</artifactId>
+  <version>${rhdm.version}</version>
+</dependency>
+-->
+
+
+
+
 	</dependencies>
 	<build>
 		<plugins>

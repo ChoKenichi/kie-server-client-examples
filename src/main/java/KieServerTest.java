@@ -10,6 +10,7 @@ import org.kie.api.command.KieCommands;
 import org.kie.api.runtime.ExecutionResults;
 import org.kie.server.api.marshalling.MarshallingFormat;
 import org.kie.server.api.model.ServiceResponse;
+import org.kie.server.api.model.KieServiceResponse;
 import org.kie.server.client.CredentialsProvider;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
@@ -23,11 +24,8 @@ import com.myspace.loan_demo.Loan;
 public class KieServerTest {
 
 	private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server";
-
 	private static final String USERNAME = "rhdmAdmin";
-
 	private static final String PASSWORD = "jboss-000";
-
 	private static final String STATELESS_KIE_SESSION_ID = "defaultKieSession";
 
 	// We use the container 'alias' instead of container name to decouple the client from the KIE-Contianer deployments.
@@ -39,14 +37,11 @@ public class KieServerTest {
 System.out.println("=========================================-=");
 
 		KieServices kieServices = KieServices.Factory.get();
-
 		CredentialsProvider credentialsProvider = new EnteredCredentialsProvider(USERNAME, PASSWORD);
-
 		KieServicesConfiguration kieServicesConfig = KieServicesFactory.newRestConfiguration(KIE_SERVER_URL, credentialsProvider);
 
 		// Set the Marshaling Format to JSON. Other options are JAXB and XSTREAM
 		kieServicesConfig.setMarshallingFormat(MarshallingFormat.JSON);
-
 		KieServicesClient kieServicesClient = KieServicesFactory.newKieServicesClient(kieServicesConfig);
 
 		// Retrieve the RuleServices Client.
@@ -72,16 +67,16 @@ System.out.println("=========================================-=");
 		BatchExecutionCommand batchExecutionCommand = commandFactory.newBatchExecution(commands, STATELESS_KIE_SESSION_ID);
 
 		ServiceResponse<ExecutionResults> response = rulesClient.executeCommandsWithResults(CONTAINER_ID, batchExecutionCommand);
-
-System.out.println(response);
-		ExecutionResults results = response.getResult();
-System.out.println(results);
-
+                if(response.getType() != KieServiceResponse.ResponseType.SUCCESS) {
+                    throw new RuntimeException(response.getMsg());
+                }
 		//We can retrieve the objects from the response using the identifiers we specified in the Insert commands.
+		ExecutionResults results = response.getResult();
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
-System.out.println(resultLoan);
 
+                //System.out.println(resultApplicant);
+                //System.out.println(resultLoan);
 
 		System.out.println("Is approved : " + resultLoan.isApproval());
 		System.out.println("Reason is: " + resultLoan.getReason());
