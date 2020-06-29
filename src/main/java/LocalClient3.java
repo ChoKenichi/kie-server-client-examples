@@ -39,7 +39,17 @@ System.out.println("=========================================-=");
                 System.out.println("number of fired rules:" + numberOfFiredRules);
 
 
-                QueryResults results = kSession.getQueryResults( "All Loan");
+                QueryResults results;
+                System.out.println("-------------------------------------------");
+                System.out.println("QuryResults(\"All Loan\")");
+                System.out.println("-------------------------------------------");
+                results  = kSession.getQueryResults( "All Loan");
+                results.forEach(row -> printLoan((Loan)row.get("loan")) );
+
+                System.out.println("-------------------------------------------");
+                System.out.println("QuryResults(\"Approved Loan\")");
+                System.out.println("-------------------------------------------");
+                results  = kSession.getQueryResults( "Approved Loan");
                 results.forEach(row -> printLoan((Loan)row.get("loan")) );
 
                 kSession.dispose();
