@@ -37,6 +37,8 @@ System.out.println("=========================================-=");
 
                 kSession.insert(getApplicant());
                 kSession.insert(getLoan());
+                kSession.insert(getLoan(4000));
+                kSession.insert(getLoan(4001));
                 kSession.fireAllRules();
 
                 // 処理結果のLoanオブジェクト一覧取得
@@ -65,9 +67,17 @@ System.out.println("=========================================-=");
 		return loan;
 	}
 
+	private static Loan getLoan(int amount) {
+		Loan loan = new Loan();
+		loan.setAmount(amount);
+		loan.setDuration(10);
+		return loan;
+	}
+
         private static void printLoan(Loan l) {
-		System.out.println("Is approved : " + l.isApproval());
-		System.out.println("Reason is: " + l.getReason());
+		System.out.println("Loan["+ l.getAmount() + "]");
+		System.out.println(" Is approved : " + l.isApproval());
+		System.out.println(" Reason : " + l.getReason());
         }
 
 }
