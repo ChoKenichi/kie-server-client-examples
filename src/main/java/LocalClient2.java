@@ -51,11 +51,8 @@ System.out.println("=========================================-=");
 		//We can retrieve the objects from the response using the identifiers we specified in the Insert commands.
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
-                //System.out.println(resultApplication);
-                //System.out.println(ResultLoadn);
 
-		System.out.println("Is approved : " + resultLoan.isApproval());
-		System.out.println("Reason is: " + resultLoan.getReason());
+                printLoan(resultLoan);
 
 System.out.println("=========================================-=");
 
@@ -75,4 +72,9 @@ System.out.println("=========================================-=");
 		return loan;
 	}
 
+        private static void printLoan(Loan l) {
+		System.out.println("Loan["+ l.getAmount() + "]");
+		System.out.println(" Is approved : " + l.isApproval());
+		System.out.println(" Reason : " + l.getReason());
+       }
 }

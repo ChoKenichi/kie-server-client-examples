@@ -75,11 +75,7 @@ System.out.println("=========================================-=");
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
 
-                //System.out.println(resultApplicant);
-                //System.out.println(resultLoan);
-
-		System.out.println("Is approved : " + resultLoan.isApproval());
-		System.out.println("Reason is: " + resultLoan.getReason());
+                printLoan(resultLoan);
 
 System.out.println("=========================================-=");
 
@@ -99,4 +95,9 @@ System.out.println("=========================================-=");
 		return loan;
 	}
 
+         private static void printLoan(Loan l) {
+                System.out.println("Loan["+ l.getAmount() + "]");
+                System.out.println(" Is approved : " + l.isApproval());
+                System.out.println(" Reason : " + l.getReason());
+        }
 }

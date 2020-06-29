@@ -16,24 +16,17 @@ import org.kie.internal.command.CommandFactory;
 import com.myspace.loan_demo.Applicant;
 import com.myspace.loan_demo.Loan;
 
-public class LocalClient {
+public class LocalClient3 {
 
-        public static final String GROUP_ID = "com.myspace";
-        public static final String ARTIFACT_ID = "loan-demo";
-        public static final String VERSION = "1.0.0-SNAPSHOT";
 
-	public static void main(String[] args) throws Exception{
-
+        public static void main(String[] args) throws Exception{
 
 System.out.println("=========================================-=");
 
 		// Load the knowledge base:
 		KieServices ks = KieServices.Factory.get();
-                // 作成したルールを使用する
-                ReleaseId releaseId = ks.newReleaseId(GROUP_ID, ARTIFACT_ID, VERSION);
-
-		KieContainer kContainer = ks.newKieContainer(releaseId);
-		KieSession kSession = kContainer.newKieSession();
+                KieContainer kContainer = ks.getKieClasspathContainer();
+        	KieSession kSession = kContainer.newKieSession("loan_demo_client");
 
                 kSession.insert(getApplicant());
                 kSession.insert(getLoan());
