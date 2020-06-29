@@ -49,6 +49,7 @@ System.out.println("=========================================-=");
 		ExecutionResults results = kSession.execute(CommandFactory.newBatchExecution(commands));
 
 		//We can retrieve the objects from the response using the identifiers we specified in the Insert commands.
+	        System.out.println("number of fired rules: " + results.getValue("numberOfFiredRules"));
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
 

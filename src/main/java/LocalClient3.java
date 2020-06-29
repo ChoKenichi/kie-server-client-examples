@@ -33,9 +33,12 @@ System.out.println("=========================================-=");
                 kSession.insert(getLoan());
                 kSession.insert(getLoan(4000));
                 kSession.insert(getLoan(4001));
-                kSession.fireAllRules();
+                int numberOfFiredRules  = kSession.fireAllRules();
 
                 // 処理結果のLoanオブジェクト一覧取得
+                System.out.println("number of fired rules:" + numberOfFiredRules);
+
+
                 QueryResults results = kSession.getQueryResults( "All Loan");
                 results.forEach(row -> printLoan((Loan)row.get("loan")) );
 

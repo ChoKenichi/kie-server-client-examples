@@ -71,7 +71,10 @@ System.out.println("=========================================-=");
                     throw new RuntimeException(response.getMsg());
                 }
 		//We can retrieve the objects from the response using the identifiers we specified in the Insert commands.
+ 
 		ExecutionResults results = response.getResult();
+	        System.out.println("number of fired rules: " + results.getValue("numberOfFiredRules"));
+
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
 
