@@ -29,7 +29,7 @@ System.out.println("=========================================-=");
 		// Load the knowledge base:
 		KieServices ks = KieServices.Factory.get();
                 // 作成したルールを使用する
-                ReleaseId releaseId = ks.newReleaseId(GROUP_ID, ARTIFACT_ID, VERSION);
+		ReleaseId releaseId = ks.newReleaseId(GROUP_ID, ARTIFACT_ID, VERSION);
 
 		KieContainer kContainer = ks.newKieContainer(releaseId);
 		KieSession kSession = kContainer.newKieSession();
@@ -43,7 +43,7 @@ System.out.println("=========================================-=");
 		//The identifiers that we provide in the insert commands can later be used to retrieve the object from the response.
 		commands.add(CommandFactory.newInsert(getApplicant(), "applicant"));
 		commands.add(CommandFactory.newInsert(getLoan(), "loan"));
-                commands.add(CommandFactory.newFireAllRules("numberOfFiredRules"));
+		commands.add(CommandFactory.newFireAllRules("numberOfFiredRules"));
 
 
 		ExecutionResults results = kSession.execute(CommandFactory.newBatchExecution(commands));
@@ -53,7 +53,7 @@ System.out.println("=========================================-=");
 		Applicant resultApplicant = (Applicant) results.getValue("applicant");
 		Loan resultLoan = (Loan) results.getValue("loan");
 
-                printLoan(resultLoan);
+		printLoan(resultLoan);
 
 System.out.println("=========================================-=");
 

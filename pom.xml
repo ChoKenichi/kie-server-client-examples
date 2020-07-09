@@ -12,7 +12,7 @@
 		<rhdm.version>7.33.0.Final-redhat-00003</rhdm.version>
 		<version.ch.qos.logback>1.2.3</version.ch.qos.logback>
 	</properties>
-	<dependencies>
+<dependencies>
 	
 		<!--  KIE Server Client -->
 <!--
@@ -23,11 +23,12 @@
 			<scope>compile</scope>
 		</dependency>
 -->
-		<dependency>
-			<groupId>com.myspace</groupId>
-			<artifactId>loan-demo</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
+<!-- For RHDM Business Rules -->
+<dependency>
+ <groupId>com.myspace</groupId>
+ <artifactId>loan-demo</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
 	
 <!-- For local execution -->
 <dependency>
@@ -67,10 +68,7 @@
 </dependency>
 -->
 
-
-
-
-	</dependencies>
+</dependencies>
 	<build>
 		<plugins>
 			<plugin>

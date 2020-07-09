@@ -25,7 +25,7 @@ public class KieServerTest {
 
 	private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server";
 	private static final String USERNAME = "rhdmAdmin";
-	private static final String PASSWORD = "jboss-000";
+	private static final String PASSWORD = "jbos000";
 	private static final String STATELESS_KIE_SESSION_ID = "defaultKieSession";
 
 	// We use the container 'alias' instead of container name to decouple the client from the KIE-Contianer deployments.

@@ -24,10 +24,10 @@ public class LocalClient3 {
 System.out.println("=========================================-=");
 
 		// Load the knowledge base:
-		KieServices ks = KieServices.Factory.get();
+                KieServices ks = KieServices.Factory.get();
                 KieContainer kContainer = ks.getKieClasspathContainer();
         	//KieSession kSession = kContainer.newKieSession("loan_demo_client");
-        	KieSession kSession = kContainer.newKieSession();
+                KieSession kSession = kContainer.newKieSession();
 
                 kSession.insert(getApplicant());
                 kSession.insert(getLoan());
